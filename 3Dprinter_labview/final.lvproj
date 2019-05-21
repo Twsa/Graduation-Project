@@ -11,6 +11,7 @@
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
 		<Item Name="final.vi" Type="VI" URL="../final.vi"/>
+		<Item Name="logo_in.vi" Type="VI" URL="../logo_in.vi"/>
 		<Item Name="依赖关系" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="System Exec.vi" Type="VI" URL="/&lt;vilib&gt;/Platform/system.llb/System Exec.vi"/>
@@ -22,6 +23,7 @@
 			<Item Name="open_gcode_exe.vi" Type="VI" URL="../open_gcode_exe.vi"/>
 			<Item Name="read_file_as_line.vi" Type="VI" URL="../read_file_as_line.vi"/>
 			<Item Name="send.vi" Type="VI" URL="../send.vi"/>
+			<Item Name="vi_dll_open.vi" Type="VI" URL="../vi_dll_open.vi"/>
 		</Item>
 		<Item Name="程序生成规范" Type="Build">
 			<Item Name="3D_Printer" Type="EXE">
@@ -40,7 +42,7 @@
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToProject</Property>
 				<Property Name="Bld_modifyLibraryFile" Type="Bool">true</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{D920844F-43FD-4072-BA33-55713113893C}</Property>
-				<Property Name="Bld_version.build" Type="Int">7</Property>
+				<Property Name="Bld_version.build" Type="Int">15</Property>
 				<Property Name="Bld_version.major" Type="Int">1</Property>
 				<Property Name="Destination[0].destName" Type="Str">3D_Printer.exe</Property>
 				<Property Name="Destination[0].path" Type="Path">../builds/3D_Printer.exe</Property>
@@ -51,51 +53,55 @@
 				<Property Name="Destination[1].path" Type="Path">../builds/data</Property>
 				<Property Name="Destination[1].path.type" Type="Str">relativeToProject</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
-				<Property Name="Exe_actXinfo_enumCLSID[0]" Type="Str">{FA714733-9093-4F91-89AD-A781B777AAB4}</Property>
-				<Property Name="Exe_actXinfo_enumCLSID[1]" Type="Str">{7100BBE4-6CF0-4E7C-9E12-2066408DF5F8}</Property>
-				<Property Name="Exe_actXinfo_enumCLSID[10]" Type="Str">{B9F4E337-A1DF-49FC-B2DD-8E74F1A900D3}</Property>
-				<Property Name="Exe_actXinfo_enumCLSID[11]" Type="Str">{2229C0A8-D255-4831-8567-04E4DBE480E4}</Property>
-				<Property Name="Exe_actXinfo_enumCLSID[12]" Type="Str">{3701B3D2-9452-4F5E-9954-1F53FF395E65}</Property>
-				<Property Name="Exe_actXinfo_enumCLSID[13]" Type="Str">{398BCBB4-0E85-4E02-959D-7DC21BC3FA9D}</Property>
-				<Property Name="Exe_actXinfo_enumCLSID[14]" Type="Str">{E29BB219-5A94-4BBD-BF8A-B8F412CBDA3C}</Property>
-				<Property Name="Exe_actXinfo_enumCLSID[15]" Type="Str">{F7501CD5-BC6A-40BF-BF6C-79D601A93CD4}</Property>
-				<Property Name="Exe_actXinfo_enumCLSID[16]" Type="Str">{07D791C8-93F4-4413-B02D-F4BB474B007B}</Property>
-				<Property Name="Exe_actXinfo_enumCLSID[2]" Type="Str">{B6DC900A-0A90-4369-ADD5-4AA8A45FB865}</Property>
-				<Property Name="Exe_actXinfo_enumCLSID[3]" Type="Str">{7A4FB5AF-E917-4A86-9045-6F9E3F459AE5}</Property>
-				<Property Name="Exe_actXinfo_enumCLSID[4]" Type="Str">{AB7E0770-B309-4E1D-A1CC-04512C9703E1}</Property>
-				<Property Name="Exe_actXinfo_enumCLSID[5]" Type="Str">{DC43289A-B1CC-4A72-A09D-6188926E0E48}</Property>
-				<Property Name="Exe_actXinfo_enumCLSID[6]" Type="Str">{E2B21569-D0C7-4ED7-A71E-7AFBBCD02792}</Property>
-				<Property Name="Exe_actXinfo_enumCLSID[7]" Type="Str">{1F4868C8-B7CD-4EA0-B439-F9A9069E9A45}</Property>
-				<Property Name="Exe_actXinfo_enumCLSID[8]" Type="Str">{AEEF9D0E-CED9-416D-AFF5-CB7D9438FBF1}</Property>
-				<Property Name="Exe_actXinfo_enumCLSID[9]" Type="Str">{9CE0E632-37D6-48BA-9DF0-A91C1C0211D5}</Property>
+				<Property Name="Exe_actXinfo_enumCLSID[0]" Type="Str">{CA4145C8-CA0A-4260-BBB1-F130E372CED9}</Property>
+				<Property Name="Exe_actXinfo_enumCLSID[1]" Type="Str">{7FA054DC-240C-4CBC-B0DC-1DF86F992D0B}</Property>
+				<Property Name="Exe_actXinfo_enumCLSID[10]" Type="Str">{C3F9CB0A-6347-472B-BF15-BB626BE5E324}</Property>
+				<Property Name="Exe_actXinfo_enumCLSID[11]" Type="Str">{AB23A6B0-7CDA-4C09-867A-59EB72FAE511}</Property>
+				<Property Name="Exe_actXinfo_enumCLSID[12]" Type="Str">{80098974-84FF-4A87-AA22-C4F7EFEC97C2}</Property>
+				<Property Name="Exe_actXinfo_enumCLSID[13]" Type="Str">{24159E53-3812-4E5A-8CF9-89D1781CEB9B}</Property>
+				<Property Name="Exe_actXinfo_enumCLSID[14]" Type="Str">{A1E063F8-7EEB-499C-916A-966BA364CC70}</Property>
+				<Property Name="Exe_actXinfo_enumCLSID[15]" Type="Str">{13F9ECCE-8E32-4B53-8E1C-835DC4D2DC5E}</Property>
+				<Property Name="Exe_actXinfo_enumCLSID[16]" Type="Str">{2B00D785-E8F7-4D46-83ED-FE017F99273E}</Property>
+				<Property Name="Exe_actXinfo_enumCLSID[2]" Type="Str">{7E64F83C-2103-4F8E-A2A5-8F6580FEA455}</Property>
+				<Property Name="Exe_actXinfo_enumCLSID[3]" Type="Str">{86D8D86F-3129-4CAE-8FB9-C7B53885E81B}</Property>
+				<Property Name="Exe_actXinfo_enumCLSID[4]" Type="Str">{9AF353EE-6FFB-4174-9E87-79E635F9A2F8}</Property>
+				<Property Name="Exe_actXinfo_enumCLSID[5]" Type="Str">{DC87A39F-89D8-4370-B8EF-F6156E92847E}</Property>
+				<Property Name="Exe_actXinfo_enumCLSID[6]" Type="Str">{302F0AC7-2765-4B24-B3B7-9FBF11B690DE}</Property>
+				<Property Name="Exe_actXinfo_enumCLSID[7]" Type="Str">{977D33A1-2067-40A1-9A45-33537CC7D14E}</Property>
+				<Property Name="Exe_actXinfo_enumCLSID[8]" Type="Str">{4AF38B89-F78B-415E-BBB3-3F596065E22E}</Property>
+				<Property Name="Exe_actXinfo_enumCLSID[9]" Type="Str">{4F790D7E-7327-4CB7-AEBE-CEF72AACC6E7}</Property>
 				<Property Name="Exe_actXinfo_enumCLSIDsCount" Type="Int">17</Property>
 				<Property Name="Exe_actXinfo_majorVersion" Type="Int">5</Property>
 				<Property Name="Exe_actXinfo_minorVersion" Type="Int">5</Property>
-				<Property Name="Exe_actXinfo_objCLSID[0]" Type="Str">{C7D03508-9C38-4CC5-B79E-2548D91D0E8B}</Property>
-				<Property Name="Exe_actXinfo_objCLSID[1]" Type="Str">{097BE990-CFAE-4D50-BDFA-49A57953340E}</Property>
-				<Property Name="Exe_actXinfo_objCLSID[10]" Type="Str">{5D331401-06B2-45DB-9CE7-D7CC38CE8B26}</Property>
-				<Property Name="Exe_actXinfo_objCLSID[11]" Type="Str">{C5BF566E-C7C8-49B9-8B32-C6459AA38C96}</Property>
-				<Property Name="Exe_actXinfo_objCLSID[12]" Type="Str">{694F646A-63BF-4EEE-8EC8-077D0F0EBBE8}</Property>
-				<Property Name="Exe_actXinfo_objCLSID[13]" Type="Str">{11466971-0644-46FA-B178-2B8AC6E696AC}</Property>
-				<Property Name="Exe_actXinfo_objCLSID[2]" Type="Str">{DE14C5CC-CC9C-445C-BCC8-D419AD17FEC0}</Property>
-				<Property Name="Exe_actXinfo_objCLSID[3]" Type="Str">{D27B187B-C914-4687-AC92-AF1C676A0554}</Property>
-				<Property Name="Exe_actXinfo_objCLSID[4]" Type="Str">{B887F6D1-0E49-474E-972C-74896306CFF3}</Property>
-				<Property Name="Exe_actXinfo_objCLSID[5]" Type="Str">{EE00626A-51CE-42BA-BFD2-47567EF4812E}</Property>
-				<Property Name="Exe_actXinfo_objCLSID[6]" Type="Str">{3BAC697B-7ECE-43A5-A358-029E4E192E7F}</Property>
-				<Property Name="Exe_actXinfo_objCLSID[7]" Type="Str">{46837052-1166-4350-B249-E88BD57E7C78}</Property>
-				<Property Name="Exe_actXinfo_objCLSID[8]" Type="Str">{B184F099-61AF-4869-B04E-5E83C8022FBA}</Property>
-				<Property Name="Exe_actXinfo_objCLSID[9]" Type="Str">{2C6D1B46-83A5-4F60-A822-CEE3BA81DE5D}</Property>
+				<Property Name="Exe_actXinfo_objCLSID[0]" Type="Str">{A896CC7B-0638-4093-A5B6-1B889DAA3348}</Property>
+				<Property Name="Exe_actXinfo_objCLSID[1]" Type="Str">{E3802AE9-264C-46B2-AFF4-523B14874977}</Property>
+				<Property Name="Exe_actXinfo_objCLSID[10]" Type="Str">{8551EDF2-42D0-4F05-BF7B-195CBBE5E004}</Property>
+				<Property Name="Exe_actXinfo_objCLSID[11]" Type="Str">{6540F2E2-E4F8-4A18-8177-D7003FF51820}</Property>
+				<Property Name="Exe_actXinfo_objCLSID[12]" Type="Str">{4A496787-4699-442D-9CE8-DC3447C0F01A}</Property>
+				<Property Name="Exe_actXinfo_objCLSID[13]" Type="Str">{64B0315F-613E-40A5-BACD-C706216B53C6}</Property>
+				<Property Name="Exe_actXinfo_objCLSID[2]" Type="Str">{163FEDD1-F3C6-4A24-BDC6-5CA55EEF5F78}</Property>
+				<Property Name="Exe_actXinfo_objCLSID[3]" Type="Str">{F6DA129F-993E-401F-AC36-6CEC0F6E71E3}</Property>
+				<Property Name="Exe_actXinfo_objCLSID[4]" Type="Str">{B59872B6-C9EF-4659-B3EE-2885BB0138AD}</Property>
+				<Property Name="Exe_actXinfo_objCLSID[5]" Type="Str">{A2664672-1D86-444C-BA54-849B4E634E08}</Property>
+				<Property Name="Exe_actXinfo_objCLSID[6]" Type="Str">{F17319C3-3643-4C0D-AE28-F3307BFC66D7}</Property>
+				<Property Name="Exe_actXinfo_objCLSID[7]" Type="Str">{785C99B3-8436-47BC-B504-CAAB4395FC68}</Property>
+				<Property Name="Exe_actXinfo_objCLSID[8]" Type="Str">{713B7432-FBF6-460C-BBC0-1DD2462C0387}</Property>
+				<Property Name="Exe_actXinfo_objCLSID[9]" Type="Str">{639FF97E-560A-4267-AA89-3A482458FF69}</Property>
 				<Property Name="Exe_actXinfo_objCLSIDsCount" Type="Int">14</Property>
 				<Property Name="Exe_actXinfo_progIDPrefix" Type="Str">DPrinter</Property>
 				<Property Name="Exe_actXServerName" Type="Str">DPrinter</Property>
 				<Property Name="Exe_actXServerNameGUID" Type="Str"></Property>
-				<Property Name="Source[0].itemID" Type="Str">{88B2A74B-4261-448D-80AE-C98E1AAA90CA}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{479FE2CA-875E-4FB9-96FA-9DA0B544AC2F}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
-				<Property Name="Source[1].itemID" Type="Ref">/我的电脑/final.vi</Property>
+				<Property Name="Source[1].itemID" Type="Ref">/我的电脑/logo_in.vi</Property>
 				<Property Name="Source[1].sourceInclusion" Type="Str">TopLevel</Property>
 				<Property Name="Source[1].type" Type="Str">VI</Property>
-				<Property Name="SourceCount" Type="Int">2</Property>
+				<Property Name="Source[2].destinationIndex" Type="Int">0</Property>
+				<Property Name="Source[2].itemID" Type="Ref">/我的电脑/final.vi</Property>
+				<Property Name="Source[2].sourceInclusion" Type="Str">Include</Property>
+				<Property Name="Source[2].type" Type="Str">VI</Property>
+				<Property Name="SourceCount" Type="Int">3</Property>
 				<Property Name="TgtF_fileDescription" Type="Str">3D_Printer</Property>
 				<Property Name="TgtF_internalName" Type="Str">3D_Printer</Property>
 				<Property Name="TgtF_legalCopyright" Type="Str">版权 2019 </Property>
