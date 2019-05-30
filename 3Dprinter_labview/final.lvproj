@@ -10,6 +10,7 @@
 		<Property Name="server.vi.callsEnabled" Type="Bool">true</Property>
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
+		<Item Name="figure.vi" Type="VI" URL="../figure.vi"/>
 		<Item Name="final.vi" Type="VI" URL="../final.vi"/>
 		<Item Name="logo_in.vi" Type="VI" URL="../logo_in.vi"/>
 		<Item Name="依赖关系" Type="Dependencies">
@@ -21,9 +22,9 @@
 			</Item>
 			<Item Name="data_handler.vi" Type="VI" URL="../data_handler.vi"/>
 			<Item Name="open_gcode_exe.vi" Type="VI" URL="../open_gcode_exe.vi"/>
-			<Item Name="read_file_as_line.vi" Type="VI" URL="../read_file_as_line.vi"/>
 			<Item Name="send.vi" Type="VI" URL="../send.vi"/>
 			<Item Name="vi_dll_open.vi" Type="VI" URL="../vi_dll_open.vi"/>
+			<Item Name="全局 1.vi" Type="VI" URL="../全局 1.vi"/>
 		</Item>
 		<Item Name="程序生成规范" Type="Build">
 			<Item Name="3D_Printer" Type="EXE">
@@ -42,7 +43,7 @@
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToProject</Property>
 				<Property Name="Bld_modifyLibraryFile" Type="Bool">true</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{D920844F-43FD-4072-BA33-55713113893C}</Property>
-				<Property Name="Bld_version.build" Type="Int">15</Property>
+				<Property Name="Bld_version.build" Type="Int">17</Property>
 				<Property Name="Bld_version.major" Type="Int">1</Property>
 				<Property Name="Destination[0].destName" Type="Str">3D_Printer.exe</Property>
 				<Property Name="Destination[0].path" Type="Path">../builds/3D_Printer.exe</Property>
